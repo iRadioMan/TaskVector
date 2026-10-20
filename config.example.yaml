@@ -1,0 +1,8 @@
+http:
+  addr: ":8080"
+db:
+  driver: sqlite
+  dsn: taskvector.db
+  auto_migrate: true
+auth:
+  allow_registration: true

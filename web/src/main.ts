@@ -1,0 +1,10 @@
+import '@fontsource-variable/inter/wght.css'
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
+import App from './App.vue'
+import './style.css'
+
+const messages={ru:{brand:'Вектор',today:'Сегодня',upcoming:'Предстоящие',all:'Все задачи',completed:'Выполненные',categories:'Категории',add:'Добавить задачу',search:'Поиск задач',newTask:'Новая задача',title:'Название',description:'Описание',due:'Срок',priority:'Приоритет',low:'Низкий',medium:'Средний',high:'Высокий',save:'Сохранить',cancel:'Отмена',empty:'Здесь пока нет задач',uncategorized:'Без категории',signIn:'Войти',register:'Создать аккаунт',email:'Электронная почта',password:'Пароль',name:'Ваше имя',logout:'Выйти',noResults:'Ничего не найдено',time:'По времени',sortPriority:'По приоритету',completedToast:'Задача выполнена',reopenedToast:'Задача снова открыта',undo:'Отменить',actionError:'Не удалось обновить задачу',loginError:'Не удалось выполнить вход',categoryExists:'Категория уже существует',changeLanguage:'Сменить язык',deleteCategory:'Удалить категорию'},en:{brand:'Vector',today:'Today',upcoming:'Upcoming',all:'All tasks',completed:'Completed',categories:'Categories',add:'Add task',search:'Search tasks',newTask:'New task',title:'Title',description:'Description',due:'Due date',priority:'Priority',low:'Low',medium:'Medium',high:'High',save:'Save',cancel:'Cancel',empty:'No tasks here yet',uncategorized:'Uncategorized',signIn:'Sign in',register:'Create account',email:'Email',password:'Password',name:'Your name',logout:'Sign out',noResults:'No results found',time:'By time',sortPriority:'By priority',completedToast:'Task completed',reopenedToast:'Task reopened',undo:'Undo',actionError:'Could not update task',loginError:'Sign in failed',categoryExists:'That category already exists',changeLanguage:'Change language',deleteCategory:'Delete category'}}
+const saved=localStorage.getItem('locale')||((navigator.language.startsWith('ru'))?'ru':'en')
+const i18n=createI18n({legacy:false,locale:saved,messages})
+createApp(App).use(i18n).mount('#app')
