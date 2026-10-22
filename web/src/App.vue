@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { formatTaskDue, fromDateTimeLocal, toDateTimeLocal } from './dates'
+import logoImg from './assets/images/logo-white.png'
 type Task={id:number;title:string;description:string;status:string;priority:string;category_id:number|null;category_name?:string;due_at:string|null}
 type Category={id:number;name:string;task_count:number;detach_count:number}
 const {t,locale}=useI18n();const user=ref<any>(null),tasks=ref<Task[]>([]),categories=ref<Category[]>([]),section=ref('all'),categoryId=ref<number|null>(null),search=ref(''),sort=ref(localStorage.getItem('sort')||'time'),loading=ref(false),error=ref(''),modal=ref(false),editingTaskId=ref<number|null>(null),categoryModal=ref(false),categoryName=ref(''),categorySaving=ref(false),authMode=ref('login'),toast=ref(''),undoTask=ref<Task|null>(null),theme=ref(localStorage.getItem('theme')||'system'),deleteDialog=ref<{kind:'category'|'task';id:number;label:string;detail:string}|null>(null)
@@ -34,7 +35,7 @@ watch([section,categoryId,search,sort],refresh);watch(locale,v=>{localStorage.se
       class="auth-card"
       @submit.prevent="submitAuth"
     >
-      <img class="brand-mark" src="../dist/assets/logo-white.png">
+      <img class="brand-mark" :src="logoImg" alt="Логотип" />
       <h1 class="stretched-text" style="padding-left:6px">{{ t('brand') }}</h1>
       <label v-if="authMode==='register'">{{ t('name') }}<input
         name="name"
@@ -86,7 +87,7 @@ watch([section,categoryId,search,sort],refresh);watch(locale,v=>{localStorage.se
   >
     <aside class="sidebar">
       <div class="brand">
-          <img class="brand-mark small" src="../dist/assets/logo-white.png">
+          <img class="brand-mark small" :src="logoImg" alt="Логотип" />
           <div class="stretched-text" style="padding-left:17px">{{ t('brand') }}</div>
       </div><nav>
         <button
